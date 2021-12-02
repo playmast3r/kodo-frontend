@@ -1,0 +1,6 @@
+<div class="post">
+  <img class="post__thumbnail" [src]="thumbnail" (error)="setDefaultPic()">
+  <div class="post__name">{{name}}</div>
+  <div class="post__description">{{description}}</div>
+  <div class="post__dateLastEdited">Last Edited On: {{dateLastEdited | date}}</div>
+</div>

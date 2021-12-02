@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --primary_color: #97BFB4;
+  --secondary_color: #fff0ca;
+  --accent_color_light: #ffdec3;
+  --accent_color_medium: #ffaa94;
+  --accent_color_dark: #0c1c22;
+}
+
+@font-face{
+  font-family: 'Roboto';
+  src: url('https://fonts.googleapis.com/css2?family=Roboto&display=swap') format('truetype');
+}
+
+body{
+  padding: 12px;
+}

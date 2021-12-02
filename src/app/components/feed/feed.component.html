@@ -1,0 +1,50 @@
+<div>
+  <div class="header">
+    <h1>Feed </h1>
+    <div class="header__inputs">
+      <div class="text_box__wrapper">
+        <div autofocus=true class="text_box__icon"><img src="/assets/icons8-search.svg"/></div>
+        <input autofocus class="text_box__input" type="text" placeholder="Search" [ngModel]="searchQuery" #search >
+      </div>
+      <div class="select_box__wrapper"> 
+        <label class="select_box__label" for="sort">Sort By</label>
+        <select class="select_box__select" id="sort" [ngModel]="sortBy" #sort [disabled]="loading">
+          <option class="select_box__select__options" *ngFor="let option of sortOptions" [value]="option.value">{{option.label}}</option>
+        </select>  
+      </div>     
+    </div>
+  </div>
+  <div class="loading" *ngIf="loading"><div class="loading__spinner"></div></div>
+  <div *ngIf="!loading">
+    <div class="pages">
+      <div class="pages__buttons">
+        <button *ngFor="let pageNumber of pages" [ngClass]="{'pages__buttons__selected': pageNumber+1 == this.currentPage }" (click)="changePage(pageNumber+1)">{{pageNumber + 1}}</button>
+      </div>
+    </div>
+    <div class="grid" *ngIf="posts.length > 0">
+      <app-posts *ngFor="let post of posts" [name]="post.name" [thumbnail]="post.image" [description]="post.description" [dateLastEdited]="post.dateLastEdited"></app-posts>
+    </div>
+    <br>
+    <br>
+    <div *ngIf="posts.length === 0" class="table">
+      <h1>NO POSTS AVAILABLE</h1>
+    </div>
+    <div class="table" *ngIf="posts.length > 0">
+      <table>
+        <thead>
+          <th scope="column">Name</th>
+          <th scope="column">Description</th>
+          <th scope="column">Date Last Edited</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let post of posts">
+            <td>{{post.name}}</td>
+            <td>{{post.description}}</td>
+            <td>{{post.dateLastEdited | date}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>  
+    <br>
+  </div>
+</div>
