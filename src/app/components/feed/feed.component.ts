@@ -61,12 +61,14 @@ export class FeedComponent implements OnInit {
       else {
         this.searchQuery = this.search.nativeElement.value.trim();
       }
+      this.currentPage = 1;
       this.updateRoute();
       this.fetchPosts();
     });
 
     this.sortSubscription = fromEvent(this.sort.nativeElement, 'change').subscribe((event) => {
       this.sortBy = this.sort.nativeElement.value;
+      this.currentPage = 1;
       this.updateRoute();
       this.fetchPosts();
     });
